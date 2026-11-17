@@ -13,7 +13,7 @@
   </div>
 
   <div class="dialog-body">
-    <form action="<?= url("card") ?>" method="POST" id="form" enctype="multipart/form-data">
+    <form action="{{ url("card") }}" method="POST" id="form" enctype="multipart/form-data">
       @csrf
       <div class="form-field">
         <label for="title" class="form-label mb-2">Title</label>

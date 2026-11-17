@@ -10,7 +10,7 @@
     <div class="swiper-wrapper">
       @foreach($card->images as $image)
         <div class="swiper-slide bg-3 rounded-4">
-          <img src="{{Storage::url($image->path_name)}}"
+          <img src="{{ url($image->path_name) }}"
             class="w-100 h-100 object-fit-contain" 
             alt=""
           >
@@ -24,7 +24,11 @@
     <h4 class="card-title">{{ $card->title }}</h4>
     <p class="card-text text-clamp-6">{{ $card->description }}</p>
     <p class="card-text">
-      <small class="fg-2">Last updated 3 mins ago</small>
+      <small class="fg-2">
+        <script>
+          document.write(moment.utc("{{$card->created_at}}").fromNow().replace(/(^an)|(^a)/, "1"));
+        </script>
+      </small>
     </p>
   </div>
 
@@ -39,11 +43,13 @@
   </button>
   <div class="menu bg-2">
     <a 
+      href="{{ route("card.edit", $card->id) }}"
       class="menu-item btn-lg">
       <i class="bi bi-pencil"></i>
       Edit
     </a>
-    <a 
+    <a
+      href="{{ route("card.destroy", $card->id) }}"
       class="menu-item theme-danger"
       onclick="return confirm('Are you sure you want to delete?')"
     >
