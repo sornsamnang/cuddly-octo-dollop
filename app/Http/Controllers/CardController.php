@@ -7,7 +7,6 @@ use App\Models\Image;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\View;
 
 class CardController extends Controller
 {
@@ -36,6 +35,7 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             "title" => "required|string",
             "files"   => "required|array|min:1",
@@ -50,11 +50,12 @@ class CardController extends Controller
             "title" => $request->title,
             "description" => $request->description
         ]);
-
+        
         foreach ($request->file("files") as $file) {
-            $path_name = $file->store("uploads", "upload");
+            $result = upload($file);
+
             Image::create([
-                "path_name" => $path_name,
+                "path_name" => $result["ObjectURL"],
                 "card_id" => $card->id
             ]);
         }
@@ -107,9 +108,10 @@ class CardController extends Controller
 
         if($request->hasFile("files")){
             foreach ($request->file("files") as $file) {
-                $path_name = $file->store("uploads", "upload");
+                $result = upload($file);
+                
                 Image::create([
-                    "path_name" => $path_name,
+                    "path_name" => $result["ObjectURL"],
                     "card_id" => $card->id
                 ]);
             }

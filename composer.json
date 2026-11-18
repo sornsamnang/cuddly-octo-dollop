@@ -10,6 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "aws/aws-sdk-php": "^3.404",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0"
     },
@@ -29,7 +30,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/helpers/s3Client.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
