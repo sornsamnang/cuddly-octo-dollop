@@ -7,9 +7,8 @@
     }
   },
   "outputDirectory": "public",
-  "routes": [
-    { "src": "/build/(.*)", "dest": "/public/build/$1" },
-    { "src": "/(.*)", "dest": "/api/index.php" }
+  "rewrites": [
+    {"source": "/(.*)", "destination": "/api/index.php" }
   ],
   "env": {
     "APP_CONFIG_CACHE": "/tmp/config.php",
@@ -20,6 +19,7 @@
     "VIEW_COMPILED_PATH": "/tmp",
     "CACHE_STORE": "array",
     "LOG_CHANNEL": "stderr",
-    "SESSION_DRIVER": "cookie"
+    "SESSION_DRIVER": "cookie",
+    "CACHE_DRIVER": "array"
   }
 }
