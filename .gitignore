@@ -1,5 +1,6 @@
 *.log
 .DS_Store
+.env
 .env.backup
 .env.production
 .phpactor.json
@@ -16,10 +17,10 @@
 /public/fonts-manifest.dev.json
 /public/hot
 /public/storage
+/public/uploads
 /storage/pail
 /vendor
 /node_modules
-/.env
 /storage/*.key
 /bootstrap/cache/*.php
 _ide_helper.php

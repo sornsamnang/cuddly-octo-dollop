@@ -1,8 +1,6 @@
 @props(["card"])
 
-<div 
-    class="card card-row bg-2 p-2 position-relative" 
-  >
+<div class="card card-row bg-2 p-2 position-relative">
   <div 
     class="swiper mySwiper z-0" 
     style="max-width: 150px; min-width: 150px; height: 240px;"
@@ -26,7 +24,11 @@
     <p class="card-text">
       <small class="fg-2">
         <script>
-          document.write(moment.utc("{{$card->created_at}}").fromNow().replace(/(^an)|(^a)/, "1"));
+          document.write(
+            moment.utc("{{$card->created_at}}")
+              .fromNow()
+              .replace(/(^an)|(^a)/, "1")
+          );
         </script>
       </small>
     </p>
